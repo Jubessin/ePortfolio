@@ -1,0 +1,310 @@
+Date: 30/11/2021
+
+1. [General Problem]
+
+    This involves the manipulation of an ArrayList composed of Stock
+    and MutualFund objects whose classes derive from an abstract 'Investment' class.
+    Operations such as adding, removing, and searching are among the tasks
+    that must be implemented. In addition, there is a requirement for use of a
+    hashmap to provide more efficient searches. There is also a need for I/O.
+    The program must account for loading a file based off command line input and
+    saving the investments back into that file at the conclusion of the program.
+    Furthermore, there is now a GUI component that builds on the previous
+    iterations of this project. Now there is the responsibility of having to
+    display different pieces of information to the user at different times while
+    continually displaying an attractive and usable interface. Lastly, there is
+    still the need for error-checking and attention towards edge-cases, such as
+    non-positive values being input by the user for price or quantity values or
+    for non-existing file names being entered into the command line.
+
+2. [Assumptions and Limitations]
+
+    This program assumes that the user has values on-hand with which they can
+    use to populate their portfolio.
+
+    The limitations of my solution are that the user must manually update the
+    prices of their investments.
+
+    The user also has no option for simply "printing" all investments, besides
+    searching and leaving all criteria blank.
+
+    Another limitation of my program is that fractional shares and units are not
+    allowed.
+
+    My program must also now assume that the file being entered into the command
+    line is formatted correctly. Currently there is loose error-checking for if
+    the formatted incorrectly. The program will attempt to read through the
+    file until it reaches the end, adding each investment to an ArrayList, and
+    if an error is encountered the program will exit the Load operation and
+    continue with an incomplete portfolio.
+
+    Lastly, with the addition of a GUI, the program assumes that the user is
+    running the program on Linux, as the minimum size of the JFrame window
+    is not respected in the same way as when tested on a Linux server.
+
+3. [Build and Testing]
+
+    [Build]
+    __________________________________________________________________________________
+
+    This program can be built by first unzipping the jerogun_a3.zip folder.
+
+    Next, in the command line interface (CLI), navigate to the folder where the
+    files have been extracted to. Navigate to the 'ePortfolio' folder.
+
+    Call 'javac *.java'. This should create .class files for Portfolio,
+    MutualFund, Stock, Investment, Window, as well as the host of nested classes within
+    the Window class.
+
+    __________________________________________________________________________________
+
+    [Testing]
+    __________________________________________________________________________________
+
+    To run the program once finished building, move up one directory (into the folder
+    which contains 'ePortfolio', 'javadoc', and 'README') and run
+    'java ePortfolio/Portfolio filename' where filename is the name of the .txt file
+    that you wish to load from (if preexisting), and save to at the program's conclusion.
+
+    In testing the program, the user must select commands from the menu bar at the top
+    of the program. With each command (aside from GetGain and Quit) the user must input
+    values into the text fields before clicking the associated button to execute the
+    command.
+
+    On several windows there is a "reset" button, that clears all text fields that
+    may have been inputted by the user.
+
+    In order to clear the message box, the user can simply reselect the command from
+    the menu bar.
+
+    To exit the program safely, the user can finish with any active operations, and either
+    click the "X" button at the top of the window or the "Quit" command from the menu bar.
+
+4. [Test Plan]
+
+    [Buy]
+    __________________________________________________________________________________
+
+    The 'Buy' command can be selected from the menu by selecting the command from the
+    menu bar at the top of the window. The user will be shown the buy panel.
+
+    When buying an investment, the user must first select whether to buy a Stock
+    or a Mutual Fund.
+
+    The user must also enter the symbol of the investment.
+
+    The program uses the input from the user to determine whether a new investment must
+    be created or if additional shares/units are to be purchased.
+
+    The user must also enter the name, quantity, and price of the investment.
+
+    Upon completion of these fields, the user can click the "add" button and view the
+    result of the operation in the message box.
+
+    The user can click the "reset" button to clear all of these fields.
+
+    In the event that no investment exists with the symbol provided by the user, a new
+    investment must be created and added to the ArrayList. The hashmap will also be
+    updated with the keywords of the new investment.
+
+    Once finished the program will display the result of buy operation or any exceptions
+    that were thrown as well as the resulting / updated investment to the message box.
+    __________________________________________________________________________________
+
+    [Sell]
+    __________________________________________________________________________________
+
+    The 'Sell' command can be selected from the menu by selecting the command from the
+    menu bar at the top of the window. The user will be shown the sell panel.
+
+    When selling an investment the user must enter the symbol of the investment to sell.
+
+    The user must also enter the name of the investment, as well as the quantity, and price.
+
+    Upon completion of these fields, the user can click the "sell" button and view the
+    result of the operation in the message box.
+
+    The user can click the "reset" button to clear all of these fields.
+
+    If no investment was found with the symbol inputted by the user, then the program
+    displays this to the user in the message box.
+
+    If invalid values are entered (non-positive, quantity input is above remaining), the
+    program displays an error message to the user via the message box.
+
+    When all input is received properly, the program performs the sell operation and checks
+    if the investment was completely sold (quantity equal to zero). If so, the investment
+    is removed from the portfolio and the hashmap is updated.
+
+    Finally the program displays the sell operation as well as the payment received,
+    and the updated investment via the message box.
+    __________________________________________________________________________________
+
+    [Update]
+    __________________________________________________________________________________
+    The 'Update' command can be selected from the menu by selecting the command from the
+    menu bar at the top of the window. The user will be shown the update panel.
+
+    On the update panel the user can cycle between investments using the "prev" and "next"
+    buttons.
+
+    The symbol and name of each investment is displayed in a non-editable text field
+    and the user can choose to enter a new price for an investment by typing into
+    the text field for "price".
+
+    The user can press the "save" button to update the investment with the new value.
+
+    If the value is unchanged, an appropriate message will be displayed to the
+    message box.
+
+    The user will be prompted for input for each investment currently within their
+    portfolio.
+
+    The program will display the symbol and name of the investment as well as the
+    current price of the investment to the message box.
+
+    If a non-positive floating-point value was entered the program will display an
+    error message to the message box.
+    __________________________________________________________________________________
+
+    [GetGain]
+    __________________________________________________________________________________
+
+    The 'GetGain' command can be selected from the menu by selecting the command from the
+    menu bar at the top of the window. The user will be shown the getgain panel.
+
+    The program will iterate over every existing investment within the user's portfolio,
+    adding the gains of each to a local Float variable.
+
+    Once finished iterating, the program will display the total gain 'at present' to the
+    user via the total gain (uneditable) text field.
+
+    Individual gains from the investments are shown within the message box.
+    **
+        Previous sell operations, and investments that have been completely sold from the
+        portfolio are not included in the gain calculation.
+
+        The getGain operation purely determines and displays the amount of payment that
+        would be given to the user if all investments were to be sold at their present price
+        and quantity.
+    **
+    __________________________________________________________________________________
+
+    [Search]
+    __________________________________________________________________________________
+
+    The 'Search' command can be selected from the menu by selecting the command from the
+    menu bar at the top of the window. The user will be shown the search panel.
+
+    The user will be prompted for 3 different inputs, all of which can be either provided
+    by the user or left blank (only whitespace entered).
+
+    The user will be prompted for inputs in this order:
+        1. Symbol
+        2. Name
+        3. Low price
+        4. High price
+
+    The user can click the "search" button at any point in time to see the results of the
+    search displayed into the message box.
+
+    The program will first check if the user wished to search by name, as this operation can
+    utilize the hashmap and efficiently narrow down the number of investments to search through.
+
+    If so, the program splits the inputted keywords by space, and for each keyword it checks for
+    its associated value in the hashmap. If the key does not exist in the hashmap then the search
+    is stopped completely. Else, the program compares the value (ArrayList of Integers of one keyword
+    with other keywords, and takes only the intersection (common integers) of all of them.
+
+    From this, the program then checks if the user wished to search by symbol also. If so, it is
+    just a matter of checking only those indices that were found among the intersection of all
+    the keywords' values. If an investment is found by its symbol, the program will then check if
+    the user wished to search by price range as well. If not it will simply print out the found
+    investment to the message box.
+
+    If the user wished to also search by price range then the program processes the user's input
+    for price range and compares it against the investment that was found-by-name (and found-by-symbol
+    if requested, as the user could just wish to search by name and price range). If a match is found
+    then the investment is printed to the message box, else the program falls through and displays
+    that no match was found.
+
+    A similar process occurs for when the user does not wish to search by name but instead by symbol
+    and/or price range.
+
+    If no search criteria was entered by the user, a message is displayed before displaying all
+    investments within the user's portfolio.
+    __________________________________________________________________________________
+
+    [Quit]
+    __________________________________________________________________________________
+
+    The 'Quit' command can be selected from the menu by selecting the command from the
+    menu bar at the top of the window or by clicking the "X" button at the top of the
+    window. The program will proceed to attempt to save the user's investments into the
+    file specified by the name entered into the command line at the program's execution.
+
+    If the user does not currently own any investments then the program will check
+    if there was a name entered into the command line, and if not, no file will be saved.
+
+    Else, if there was a filename entered, the file will be overwritten and made blank.
+
+    If the user does have open investments at the conclusion of the program, the file
+    entered at the program's execution will be cleared and then the investments will be
+    written into the file. If there was no filename included in the program's execution
+    but investments exist within the user's portfolio then a file "output.txt" will be
+    created and written to.
+
+    Finally the program will exit the program via a call to System.
+    __________________________________________________________________________________
+
+    [Save/Load]
+    __________________________________________________________________________________
+
+    There is some error checking with the save and load operations. Firstly, both involve the use
+    of try-catch wrapping because of the use of objects like PrintWriter, and File. However, most
+    error checking can be found in the load operation as at that point the file being read from
+    cannot be guaranteed to be formatted correctly. The load operation attempts to read through
+    the file, line by line, adding the relevant information on the line to an array of type String
+    (size of 5). When all information required for the creation of a new Investment has been
+    collected a Stock or MutualFund object is created and added to the ArrayList.
+
+    The load operation keeps track of whether the information being collected is for a Stock or
+    MutualFund object based on the 'type="xxx"' line that precedes all other Investment variables.
+
+    If no 'type="xxx"' line is found the program assumes the Investment is a Stock to avoid issues
+    with operations involving the hashmap, buying, selling, searching and others. The program
+    recognizes the error with the file's formatting and displays this to the user but continues to
+    read through the file.
+
+    If an error is encountered at any point in the load operation such as incorrect variable ordering,
+    or incorrect variable type (e.g., string being entered for quantity, price, or book value), the
+    program displays the error to the user and immediately exits the load operation. However, this
+    error encounter does not affect the rest of the program or the user's portfolio if other
+    investments were read in successfully prior to the encounter.
+    __________________________________________________________________________________
+
+5. [Improvements]
+
+    One thing I still think would make this program better is being able to keep track of all
+    gains/losses. Currently, the program only checks for the amount of payment received from selling
+    all investments existing within the portfolio. However, because of this, past gains and
+    investments that have been completely sold are not kept track of within the portfolio.
+
+    Implementing this would be simple as well. To do so I would have a variable within the portfolio class
+    that is updated whenever an investment is bought or sold, while also having a local variable within
+    the getGain() method that is a copy of the 'totalGain'. Then that local variable can then be used to
+    display the total gain after selling all investments while keeping the actual 'totalGain' intact.
+
+    I think one other thing that could be improved is giving the user the option of whether to load their
+    portfolio from a file at the start of the program's execution or to do so later on. Providing an option
+    for the user to load investments and save investments from and to different files at any point of the
+    program's runtime would be a massive improvement in my opinion. Also, I think forcing the user to have
+    the changes they made be saved to the file they entered at the program's conclusion could be changed as
+    a result.
+
+    There could also be further error checking for whether the name entered into the command line is
+    actually a .txt file.
+
+    Also, making all of the buttons disabled/enabled depending on certain factors within the portfolio's
+    would be a big improvement to the user interface (e.g., making it so the search button is not active
+    when there are no investments in the portfolio).
