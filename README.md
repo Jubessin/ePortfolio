@@ -83,7 +83,8 @@ Date: 30/11/2021
 4. [Test Plan]
 
     [Buy]
-![Buy](https://github.com/Jubessin/ePortfolio/blob/main/examples/buy.png)
+   
+    ![Buy](https://github.com/Jubessin/ePortfolio/blob/main/examples/buy.png)
     __________________________________________________________________________________
 
     The 'Buy' command can be selected from the menu by selecting the command from the
@@ -113,7 +114,8 @@ Date: 30/11/2021
     __________________________________________________________________________________
 
     [Sell]
-![Sell](https://github.com/Jubessin/ePortfolio/blob/main/examples/sell.png)
+    
+    ![Sell](https://github.com/Jubessin/ePortfolio/blob/main/examples/sell.png)
     __________________________________________________________________________________
 
     The 'Sell' command can be selected from the menu by selecting the command from the
@@ -143,7 +145,8 @@ Date: 30/11/2021
     __________________________________________________________________________________
 
     [Update]
-![Update](https://github.com/Jubessin/ePortfolio/blob/main/examples/update.png)
+    
+    ![Update](https://github.com/Jubessin/ePortfolio/blob/main/examples/update.png)
     __________________________________________________________________________________
     The 'Update' command can be selected from the menu by selecting the command from the
     menu bar at the top of the window. The user will be shown the update panel.
@@ -171,6 +174,8 @@ Date: 30/11/2021
     __________________________________________________________________________________
 
     [GetGain]
+
+    ![](https://github.com/Jubessin/ePortfolio/blob/main/examples/total%20gain.png)
     __________________________________________________________________________________
 
     The 'GetGain' command can be selected from the menu by selecting the command from the
@@ -194,7 +199,8 @@ Date: 30/11/2021
     __________________________________________________________________________________
 
     [Search]
-![Search](https://github.com/Jubessin/ePortfolio/blob/main/examples/search.png)
+    
+    ![Search](https://github.com/Jubessin/ePortfolio/blob/main/examples/search.png)
     __________________________________________________________________________________
 
     The 'Search' command can be selected from the menu by selecting the command from the
@@ -287,7 +293,7 @@ Date: 30/11/2021
     investments were read in successfully prior to the encounter.
     __________________________________________________________________________________
 
-5. [Improvements]
+6. [Improvements]
 
     One thing I still think would make this program better is being able to keep track of all
     gains/losses. Currently, the program only checks for the amount of payment received from selling
